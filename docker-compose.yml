@@ -9,7 +9,7 @@ services:
     command: python /code/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
-      - static_volume2:/code/assets  # Persist static files
+      - static_volume3:/code/assetsfiles  # Persist static files
       - media_volume2:/code/media    # Persist media files
       - ./db/db.sqlite3:/app/db.sqlite3 
     expose:
@@ -18,7 +18,7 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - static_volume2:/code/assets  # Share static files with Nginx
+      - static_volume3:/code/assetsfiles  # Share static files with Nginx
       - media_volume2:/code/media    # Share media files with Nginx
     ports:
       - "8086:80"  # Map external port 80 to Nginx port 80
@@ -26,5 +26,5 @@ services:
       - app
 
 volumes:
-  static_volume2:
+  static_volume3:
   media_volume2:

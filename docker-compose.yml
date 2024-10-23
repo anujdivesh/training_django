@@ -1,0 +1,30 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    container_name: dbms_wed
+    command: python /code/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+      - static_volume2:/code/assets  # Persist static files
+      - media_volume2:/code/media    # Persist media files
+      - ./db/db.sqlite3:/app/db.sqlite3 
+    expose:
+      - 8000:8000
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume2:/code/assets  # Share static files with Nginx
+      - media_volume2:/code/media    # Share media files with Nginx
+    ports:
+      - "8086:80"  # Map external port 80 to Nginx port 80
+    depends_on:
+      - app
+
+volumes:
+  static_volume2:
+  media_volume2:

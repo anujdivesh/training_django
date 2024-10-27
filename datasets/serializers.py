@@ -7,8 +7,11 @@ class DatasetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Dataset
-        fields = ('title','abstract','file','full_file_path') 
-
+        fields = ('title','abstract','temporalCoverageFrom','temportalCoverageTo',\
+        'language','version','openAccess','dataType','project','SpatialInfo',\
+        'autoGenerateBBOX','boundingBox','GeoReferenceSystem','contact','publisher',\
+        'license','Tag','Topic','LocalAccessPath','file','full_file_path') 
+        depth = 3
 
         
     def get_full_file_path(self, obj):

@@ -18,9 +18,21 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+
+admin.site.site_header = 'Tuvalu Data Management'
+admin.site.site_title = 'Tuvalu Data Management'
+admin.site.index_title = "Welcome to Data Management System"
 
 urlpatterns = [
-    path('dbms', include('datasets.urls')),
+    path('dbms/', include('datasets.urls')),
     path("dbms/admin/", admin.site.urls),
     path('dbms/api/', include('datasets.urls')),
+    path('dbms/api/', include('boundingbox.urls')),
+     path('dbms/api/', include('contact.urls')),
+     path('dbms/api/', include('dataType.urls')),
+     path('dbms/api/', include('project.urls')),
+     path('dbms/api/', include('spatialInfo.urls')),
+     path('dbms/api/', include('tag.urls')),
+     path('dbms/api/', include('topic.urls')),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -23,12 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-01-qj-(5%p5uyz1j2l2w-7w3-b0b)*xr+(se&qxbj0sx%ao!ob"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 CSRF_TRUSTED_ORIGINS=['https://*.spc.int',"http://localhost*"]
 ALLOWED_HOSTS = ["*"]
 CORS_ALLOW_ALL_ORIGINS = True
-
-
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -98,7 +96,7 @@ WSGI_APPLICATION = "metadata.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+"""
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -112,7 +110,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-"""
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -155,18 +153,16 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')  
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "/media/"
-"""
+
 STATIC_URL = '/assets/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'assetsfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
 
 
-
+"""
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Ensure this matches the volume mount
 

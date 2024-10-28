@@ -9,6 +9,7 @@ from rest_framework import viewsets
 from .models import SpatialRepresentationInfo
 from .serializers import SpatialRepresentationInfoSerializer  
 from .permissions import IsAuthenticatedForPOSTOnly
+from django.shortcuts import get_object_or_404
 
 def spatialrepresentationinfos(request):
     return HttpResponse("Hello world!")
@@ -20,4 +21,11 @@ class SpatialRepresentationInfoView(viewsets.ViewSet):
     def list(self, request):
         queryset = SpatialRepresentationInfo.objects.all()
         serializer = SpatialRepresentationInfoSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+    def retrieve(self, request, pk=None):
+        queryset = SpatialRepresentationInfo.objects.all()
+        user = get_object_or_404(queryset, pk=pk)
+        serializer = SpatialRepresentationInfoSerializer(user)
         return Response(serializer.data)

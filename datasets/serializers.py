@@ -7,7 +7,7 @@ class DatasetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Dataset
-        fields = ('title','abstract','temporalCoverageFrom','temportalCoverageTo',\
+        fields = ('id','title','abstract','temporalCoverageFrom','temportalCoverageTo',\
         'language','version','openAccess','dataType','project','SpatialInfo',\
         'autoGenerateBBOX','boundingBox','GeoReferenceSystem','contact','publisher',\
         'license','Tag','Topic','LocalAccessPath','file','full_file_path') 

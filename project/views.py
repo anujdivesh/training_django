@@ -9,6 +9,7 @@ from rest_framework import viewsets
 from .models import Project
 from .serializers import ProjectSerializer  
 from .permissions import IsAuthenticatedForPOSTOnly
+from django.shortcuts import get_object_or_404
 
 def projects(request):
     return HttpResponse("Hello world!")
@@ -20,4 +21,10 @@ class ProjectView(viewsets.ViewSet):
     def list(self, request):
         queryset = Project.objects.all()
         serializer = ProjectSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        queryset = Project.objects.all()
+        user = get_object_or_404(queryset, pk=pk)
+        serializer = ProjectSerializer(user)
         return Response(serializer.data)

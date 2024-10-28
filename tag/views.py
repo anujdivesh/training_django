@@ -8,11 +8,13 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 from .models import Tag
 from .serializers import TagSerializer  
+from .permissions import IsAuthenticatedForPOSTOnly
 
 def tags(request):
     return HttpResponse("Hello world!")
 
 class TagView(viewsets.ViewSet):
+    permission_classes = [IsAuthenticatedForPOSTOnly] 
     queryset = Tag.objects.all()
 
     def list(self, request):

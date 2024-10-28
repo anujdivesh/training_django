@@ -8,11 +8,13 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 from .models import boundingBox
 from .serializers import boundingBoxSerializer  
+from .permissions import IsAuthenticatedForPOSTOnly
 
 def boundingBoxs(request):
     return HttpResponse("Hello world!")
 
 class boundingBoxView(viewsets.ViewSet):
+    permission_classes = [IsAuthenticatedForPOSTOnly] 
     queryset = boundingBox.objects.all()
 
     def list(self, request):

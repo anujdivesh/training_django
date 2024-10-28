@@ -8,11 +8,13 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 from .models import Contact
 from .serializers import ContactSerializer  
+from .permissions import IsAuthenticatedForPOSTOnly
 
 def ContactBoxs(request):
     return HttpResponse("Hello world!")
 
 class ContactView(viewsets.ViewSet):
+    permission_classes = [IsAuthenticatedForPOSTOnly] 
     queryset = Contact.objects.all()
 
     def list(self, request):

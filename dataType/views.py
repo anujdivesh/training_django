@@ -8,11 +8,13 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 from .models import DataType
 from .serializers import DataTypeSerializer  
+from .permissions import IsAuthenticatedForPOSTOnly
 
 def datatypes(request):
     return HttpResponse("Hello world!")
 
 class DataTypeView(viewsets.ViewSet):
+    permission_classes = [IsAuthenticatedForPOSTOnly] 
     queryset = DataType.objects.all()
 
     def list(self, request):

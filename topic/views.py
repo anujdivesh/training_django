@@ -8,11 +8,13 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 from .models import Topic
 from .serializers import TopicSerializer  
+from .permissions import IsAuthenticatedForPOSTOnly
 
 def topics(request):
     return HttpResponse("Hello world!")
 
 class TopicView(viewsets.ViewSet):
+    permission_classes = [IsAuthenticatedForPOSTOnly] 
     queryset = Topic.objects.all()
 
     def list(self, request):

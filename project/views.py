@@ -8,11 +8,13 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 from .models import Project
 from .serializers import ProjectSerializer  
+from .permissions import IsAuthenticatedForPOSTOnly
 
 def projects(request):
     return HttpResponse("Hello world!")
 
 class ProjectView(viewsets.ViewSet):
+    permission_classes = [IsAuthenticatedForPOSTOnly] 
     queryset = Project.objects.all()
 
     def list(self, request):

@@ -8,11 +8,14 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 from .models import Dataset
 from .serializers import DatasetSerializer  
+from .permissions import IsAuthenticatedForPOSTOnly
+
 
 def datasets(request):
     return HttpResponse("Hello world!")
 
 class DatasetView(viewsets.ViewSet):
+    permission_classes = [IsAuthenticatedForPOSTOnly] 
     queryset = Dataset.objects.all()
 
     def list(self, request):

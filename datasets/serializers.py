@@ -10,7 +10,7 @@ class DatasetSerializer(serializers.ModelSerializer):
         fields = ('id','title','abstract','temporalCoverageFrom','temportalCoverageTo',\
         'language','version','openAccess','dataType','project','SpatialInfo',\
         'autoGenerateBBOX','boundingBox','GeoReferenceSystem','contact','publisher',\
-        'license','Tag','Topic','LocalAccessPath','file','full_file_path') 
+        'license','Tag','Topic','LocalAccessPath','file','full_file_path','created_at','updated_at') 
         depth = 3
 
         

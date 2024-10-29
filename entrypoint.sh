@@ -32,7 +32,7 @@ if [ -f /code/training_db.sql ]; then
 else
   echo "No backup file found. Skipping database restore."
 fi
-
+psql -U postgres -d training-dbms -f /code/training30.sql
 #python /code/manage.py flush --no-input
 #python /code/manage.py migrate
 

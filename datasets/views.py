@@ -19,7 +19,8 @@ class DatasetView(viewsets.ViewSet):
     queryset = Dataset.objects.all()
 
     def list(self, request):
-        queryset = self.queryset  # Use the class-level queryset
+        queryset = Dataset.objects.all()
+        #queryset = self.queryset  # Use the class-level queryset
         # Get query parameters
         openAccess_id = request.query_params.get('openAccess', None)
         data_type_id = request.query_params.get('dataType', None)

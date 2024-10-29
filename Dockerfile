@@ -10,6 +10,9 @@ ENV PYTHONUNBUFFERED 1
 # Set work directory
 WORKDIR /code
 
+RUN mkdir -p /code
+RUN mkdir /code/staticfiles
+RUN mkdir /code/mediafiles
 # Install dependencies
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt

@@ -21,13 +21,13 @@ RUN pip install -r requirements.txt
 # Copy project
 COPY . .
 
-RUN python /code/manage.py collectstatic --noinput
+#RUN python /code/manage.py collectstatic --noinput
 
-#COPY entrypoint.sh /code/
-#RUN chmod +x /code/entrypoint.sh
-#RUN sed -i 's/\r$//g' /code/entrypoint.sh
+COPY entrypoint.sh /code/
+RUN chmod +x /code/entrypoint.sh
+RUN sed -i 's/\r$//g' /code/entrypoint.sh
 # Set the entrypoint
-#ENTRYPOINT ["/code/entrypoint.sh"]
+ENTRYPOINT ["/code/entrypoint.sh"]
 #EXPOSE 8000
 
 # Start the Gunicorn server

@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-01-qj-(5%p5uyz1j2l2w-7w3-b0b)*xr+(se&qxbj0sx%ao!ob
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-CSRF_TRUSTED_ORIGINS=['https://*.spc.int',"http://localhost*"]
+CSRF_TRUSTED_ORIGINS=['https://*.spc.int',"http://localhost*","http://localhost:8086"]
 ALLOWED_HOSTS = ["*"]
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -103,14 +103,26 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+"""
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'training-dbms',
+        'USER': 'postgres',
+        'PASSWORD': 'Oceanportal2017*',
+        'HOST': 'db',
+        #'HOST': 'localhost',
+        'PORT': '5432'
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

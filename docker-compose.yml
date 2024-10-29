@@ -14,7 +14,19 @@ services:
       - ./db/db.sqlite3:/app/db.sqlite3 
     expose:
       - 8000:8000
-
+  db:
+    image: postgres:14
+    container_name: training_db
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: .env
+    environment:
+      - POSTGRES_USER=$POSTGRESDB_USER
+      - POSTGRES_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
+      - POSTGRES_DB=$POSTGRESDB_DATABASE
+    ports:
+      - "$POSTGRESDB_LOCAL_PORT:$POSTGRESDB_DOCKER_PORT"
   nginx:
     build: ./nginx
     volumes:
@@ -28,3 +40,4 @@ services:
 volumes:
   static_volume3:
   media_volume2:
+  postgres_data:
